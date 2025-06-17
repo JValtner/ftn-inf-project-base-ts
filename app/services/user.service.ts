@@ -1,4 +1,4 @@
-import { User } from "../models/user.model.js";
+import { UserResponse } from "../models/userResponse.model.js";
 
 export class UserService {
     private apiUrl: string;
@@ -6,7 +6,7 @@ export class UserService {
     constructor() {
         this.apiUrl = 'http://localhost:20181/api/korisnik';
     }
-    getAll(): Promise<User[]> {
+    getAll(): Promise<UserResponse> {
         return fetch(this.apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -16,8 +16,8 @@ export class UserService {
                 }
                 return response.json()
             })
-            .then((users: User[]) => {
-                return users;
+            .then((response: UserResponse) => {
+                return response;
             })
             .catch(error => {
                 console.error('Error:', error.status)
