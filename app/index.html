@@ -8,6 +8,38 @@
     <script type="module" src="../dist/index.js"></script>
 </head>
 <body>
+    <nav class="navbar">
+        <h1 class="title">Drustvena mreza</h1>
+        <ul class="nav-links">
+            <li><a href="../pregledGrupa/pregledGrupa.html">Grupe</a></li>
+            <li><a href="#">Korisnici</a></li>
+        </ul>
+    </nav>
+
+    <section class="site-description">
+        <hr>
+        <h2>Pregled Korisnika</h2>
+        <hr>
+        <button id="dodajKorisnikaBtn">Dodaj korisnika</button>
+        <hr>
+        <p id="success-msg"></p>
+    </section>
     
+    <section class="main-content">
+        <table class="user-data">
+            <thead class="user-data-head">
+                <tr>
+                    <th>Id</th> 
+                    <th>Korisničko Ime</th> 
+                    <th>Ime</th> 
+                    <th>Prezime</th> 
+                    <th>Datum rodjenja</th> 
+                    <th>Opcije</th> 
+                </tr>
+            </thead>
+            <tbody id="user-data-body">
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
