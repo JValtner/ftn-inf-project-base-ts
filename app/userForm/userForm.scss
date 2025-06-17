@@ -1,0 +1,35 @@
+@import ".././styles/global";
+@import "../index";
+
+.form-container{
+    text-align: left;
+    width:80%;
+    .form-row{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-evenly;
+        label{
+            width:300px;
+        }
+        input{
+            width:300px;
+            &:hover{
+                background-color: rgb(235, 249, 235);
+            }
+        }
+        
+    }
+    .form-row-Btn{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        button{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+}

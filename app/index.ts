@@ -13,9 +13,7 @@ userService.getAll()
     return;
   }
 
-  console.log("TEST:", response)
 
-  
   for (let i = 0; i < response.data.length; i++) {
     
     const newRow = document.createElement('tr');

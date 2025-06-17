@@ -1,4 +1,4 @@
-import { Group } from "./group.model";
+import { Group } from "./group.model.js";
 
 export interface User{
     id: number;
@@ -6,7 +6,6 @@ export interface User{
     ime: string;
     prezime: string;
     datumRodjenja: string;
-    datumOsnivanja:string;
-    grupeKorisnika:Group[];
+    grupeKorisnika?:Group[];
 }
     
