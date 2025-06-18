@@ -42,6 +42,20 @@ userService.getAll()
     cell6.textContent = response.data[i].grupeKorisnika.map(g => g.ime).join(', ');
     newRow.appendChild(cell6);
 
+    //Edit Button
+    const cell7 = document.createElement('td');
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.style.width = 'auto';
+
+    const userId = response.data[i].id;
+    editButton.onclick = function () {
+      window.location.href = `./userForm/userForm.html?id=${userId}`;
+    };
+    cell7.appendChild(editButton);
+    newRow.appendChild(cell7);
+
+    //Delete Button TODO
     table.appendChild(newRow);
   }
 })
