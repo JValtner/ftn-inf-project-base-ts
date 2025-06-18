@@ -22,7 +22,6 @@ function initializeForm(): void {
     }
 }
 
-
 function submit(): void {
     event.preventDefault(); 
     const userName = (document.querySelector('#korisnickoIme') as HTMLInputElement).value;
@@ -63,9 +62,7 @@ function submit(): void {
             console.log(`Greška ${error.status}: ${error.message}`);
         });
     }
-    
 }
-
 
 function formatDate(isoDateString: string): string {
   const date = new Date(isoDateString)

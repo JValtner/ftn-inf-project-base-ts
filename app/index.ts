@@ -55,7 +55,24 @@ userService.getAll()
     cell7.appendChild(editButton);
     newRow.appendChild(cell7);
 
-    //Delete Button TODO
+    //Delete Button
+    const cell8 = document.createElement('td');
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.style.width = 'auto';
+
+    deleteButton.onclick = function(){
+      userService.delete(userId.toString())
+        .then(() => {
+          newRow.remove(); 
+        })
+        .catch(error => {
+          console.error(error.status, error.text);
+        });
+    };
+    cell8.appendChild(deleteButton);
+    newRow.appendChild(cell8);
+    
     table.appendChild(newRow);
   }
 })
@@ -63,6 +80,7 @@ userService.getAll()
   console.error(error.status, error.message);
 });
 }
+
 function formattedDate(dateString: string): string {
   const rawDate = new Date(dateString);
   return rawDate.toLocaleDateString('sr-RS', {
@@ -71,8 +89,6 @@ function formattedDate(dateString: string): string {
     year: 'numeric'
   });
 }
-
-
 
 window.addEventListener('DOMContentLoaded', () => {
   renderData();
