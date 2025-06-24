@@ -19,7 +19,6 @@
     transition: opacity 0.3s;
 
     &::after {
-      content: '';
       position: absolute;
       border-width: 6px;
       border-style: solid;

@@ -54,9 +54,11 @@ function submit(event:Event): void {
           statusMsg('edit');
           setTimeout(() => {
             window.location.href = '../index.html';
-          }, 4000); // delay must be longer than statusMsg update
+          }, 3200); // delay must be longer than statusMsg update
         })
         .catch(error => {
+          const errMsg = document.getElementById('err-msg') as HTMLParagraphElement;
+          errMsg.textContent=`Doslo je do greske ${error.status, error.text}`
           console.error(error.status, error.text);
         });
     } else {
@@ -65,9 +67,11 @@ function submit(event:Event): void {
           statusMsg("new");
           setTimeout(() => {
             window.location.href = '../index.html';
-          }, 4000);
+          }, 3200);
         })
         .catch(error => {
+          const errMsg = document.getElementById('err-msg') as HTMLParagraphElement;
+          errMsg.textContent=`Doslo je do greske ${error.status, error.text}`
           console.error(error.status, error.message);
         });
 }
@@ -161,7 +165,7 @@ function statusMsg(action: string): void {
     text.textContent = action === "new"
       ? "Korisnik je uspešno kreiran."
       : "Korisnik je uspešno izmenjen.";
-  }, 1000);
+  }, 2800);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
