@@ -1,35 +1,107 @@
 @import ".././styles/global";
 @import "../index";
 
-.form-container{
-    text-align: left;
-    width:80%;
-    .form-row{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: space-evenly;
-        label{
-            width:300px;
-        }
-        input{
-            width:300px;
-            &:hover{
-                background-color: rgb(235, 249, 235);
-            }
-        }
-        
+.form-container {
+  text-align: left;
+  width: 80%;
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    label {
+      width: 300px;
+      display: block;
+      box-sizing: border-box;
     }
-    .form-row-Btn{
-        margin-top: 20px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        button{
-            margin-left: 20px;
-            margin-right: 20px;
-        }
+
+    input {
+      width: 300px;
+      padding: 6px;
+      margin-bottom: 4px;
+      display: block;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: rgb(235, 249, 235);
+      }
     }
+  }
+
+  .err-msg {
+    display: inline-block;
+    min-height: 1.2em;
+    font-size: 0.9em;
+    color: red;
+    margin-bottom: 12px;
+    width: 300px;
+    box-sizing: border-box;
+    visibility: hidden;
+  }
+
+  .err-msg.visible {
+    visibility: visible;
+  }
+
+  .form-row-Btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 640px;
+
+    .tooltip {
+      flex: 1;
+
+      button {
+        width: 100%;
+
+        &:disabled {
+          background-color: grey;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .status-msg {
+    position: relative;
+    margin-top: 20px;
+    padding: 10px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+
+    #status-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .status-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background-color: green;
+      width: 0%;
+      animation: fillBar 4s linear forwards;
+      z-index: 1;
+      border-radius: 2px;
+    }
+  }
+
+  @keyframes fillBar {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }

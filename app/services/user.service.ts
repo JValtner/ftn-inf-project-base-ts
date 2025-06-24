@@ -112,5 +112,29 @@ export class UserService {
                     throw { status, message }; // rethrow for UI to catch
             });   
     }
+    attachTooltipTimeouts() {
+    document.querySelectorAll('.tooltip').forEach(tooltip => {
+        const tooltipText = tooltip.querySelector('.tooltiptext') as HTMLElement;
+        if (!tooltipText) return;
+
+        let timeoutId: number | null = null;
+
+        tooltip.addEventListener('mouseenter', () => {
+        timeoutId = window.setTimeout(() => {
+            tooltipText.style.visibility = 'visible';
+            tooltipText.style.opacity = '1';
+        }, 500); // show tooltip after 500ms
+        });
+
+        tooltip.addEventListener('mouseleave', () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+        tooltipText.style.visibility = 'hidden';
+        tooltipText.style.opacity = '0';
+        });
+    });
+    }
 }
 

@@ -43,37 +43,63 @@ userService.getAll()
     newRow.appendChild(cell6);
 
     //Edit Button
-    const cell7 = document.createElement('td');
+   const cell7 = document.createElement('td');
+
+    const tooltipDivEdit = document.createElement('div');
+    tooltipDivEdit.className = 'tooltip left';
+
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.style.width = 'auto';
 
     const userId = response.data[i].id;
-    editButton.onclick = function () {
+    editButton.onclick = () => {
       window.location.href = `./userForm/userForm.html?id=${userId}`;
     };
-    cell7.appendChild(editButton);
+
+    const tooltipSpanEdit = document.createElement('span');
+    tooltipSpanEdit.className = 'tooltiptext';
+    tooltipSpanEdit.textContent = 'Dodaj novog korisnika';
+
+    tooltipDivEdit.appendChild(editButton);
+    tooltipDivEdit.appendChild(tooltipSpanEdit);
+
+    cell7.appendChild(tooltipDivEdit);
     newRow.appendChild(cell7);
 
     //Delete Button
     const cell8 = document.createElement('td');
+
+    const tooltipDivDel = document.createElement('div');
+    tooltipDivDel.className = 'tooltip right';
+
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.style.width = 'auto';
 
-    deleteButton.onclick = function(){
+    deleteButton.onclick = () => {
       userService.delete(userId.toString())
         .then(() => {
-          newRow.remove(); 
+          newRow.remove();
         })
         .catch(error => {
           console.error(error.status, error.text);
         });
     };
-    cell8.appendChild(deleteButton);
+
+    const tooltipSpanDel = document.createElement('span');
+    tooltipSpanDel.className = 'tooltiptext';
+    tooltipSpanDel.textContent = 'Obriši korisnika';
+
+    tooltipDivDel.appendChild(deleteButton);
+    tooltipDivDel.appendChild(tooltipSpanDel);
+
+    cell8.appendChild(tooltipDivDel);
     newRow.appendChild(cell8);
+
     
     table.appendChild(newRow);
+    userService.attachTooltipTimeouts();
   }
 })
 .catch(error => {
@@ -89,6 +115,8 @@ function formattedDate(dateString: string): string {
     year: 'numeric'
   });
 }
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
   renderData();
